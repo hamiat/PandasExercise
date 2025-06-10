@@ -87,12 +87,56 @@ def handle_missing_data(df: pd.DataFrame) -> pd.DataFrame:
 
 # Exercise 2    
 def titanic_data():
+    # Reading the Titanic dataset
     df = pd.read_csv("titanic.csv")
+    
+    # Removing stuff from column names
     stuff_to_remove = string.punctuation + string.whitespace
     pattern = f"[{re.escape(stuff_to_remove)}]"
     df.columns = df.columns.str.replace(pattern, "", regex=True)
-    print(df)
-
+    
+    # Renaming columns for children
+    df.loc[df["Age"] < 18, "Sex"] = "child"
+    #print(df)
+    
+    # Grouping and calculating mean fare
+    df2 = df.copy()  
+    df2_mean = df2.groupby("Sex")["Fare"].mean()
+    #print(df2_mean)
+    
+    # Grouping and calculating mean fare and class
+    df3 = df.copy()  
+    df3_mean = df3.groupby(["Sex", "Pclass"])["Fare"].mean().reset_index()
+    #print(df3_mean)
+    
+    # Grouping and calculating mean fare, class for survivors
+    df4 = df.copy()
+    df4_mean = df4[df4["Survived"] == 1].groupby("Survived")["Fare"].mean().reset_index()
+    #print(df4_mean)
+    
+    #Split DataFrames
+    df5 = df.copy()
+    split_df_by_sex = dict(tuple(df.groupby("Sex")))
+    #print(split_df_by_sex)
+    
+    #People with any relatives aboard
+    df6 = df.copy()
+    ppl_with_relatives =  (df6["SiblingsSpousesAboard"] > 0) | (df6["ParentsChildrenAboard"] > 0)
+    df6 = df6[ppl_with_relatives][["Pclass", "Name", "Age", "SiblingsSpousesAboard", "ParentsChildrenAboard"]]
+    #print(df6)
+    
+    #People with both parents and children aboard
+    df7 = df.copy()
+    ppl_with_parents_children_aboard = (df7["ParentsChildrenAboard"] > 0) & (df7["SiblingsSpousesAboard"] > 0)
+    df7 = df7[ppl_with_parents_children_aboard][["Pclass", "Name", "Age", "SiblingsSpousesAboard", "ParentsChildrenAboard", "Fare"]]
+ 
+    df7_mean = df7["Fare"].mean()
+    print(df7_mean)
+    
+    
+    
+    
+    
 if __name__ == "__main__":
     df = main()
     older_than_twentyfive = older_than_twentyfive(df)
