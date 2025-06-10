@@ -1,5 +1,6 @@
 import re
 import string
+import numpy as np
 import pandas as pd
 
 #1.0 Creating dataframes
@@ -62,8 +63,8 @@ def main() -> pd.DataFrame:
     
     #10.0 Unique values
     unique_ages_df = df["age"].unique()
-    print(f"Unique ages: {unique_ages_df}")
-    
+    #print(f"Unique ages: {unique_ages_df}")
+   
     return df
 
 #2.0 Indexing and slicing
@@ -132,10 +133,43 @@ def titanic_data():
  
     df7_mean = df7["Fare"].mean()
     print(df7_mean)
+ 
+def testing_numpy():
+    arr = np.random.randint(5, 50, size=12)
+    arr_max = np.max(arr)
+    arr_min = np.min(arr)
+    #print(f"Array: {arr} \nMin: {arr_min}, Max: {arr_max}")
     
+    arr2 = np.random.randint(1, 10, size=15)
+    arr2_mean = np.mean(arr2)
+    arr2_median = np.median(arr2)
+    #print(f"Array: {arr2} \nMean: {arr2_mean}, Median: {arr2_median}")
     
+    arr3 = np.random.uniform(-100, 100, size=25)
+    arr3_round = arr3.round()
+    #print(f"Random Floats: {arr3}\n Rounded:{arr3_round} " )
     
+    #2D Array
+    arr4 = np.random.uniform(1, 100, size=(3, 4))
+    arr4_min = np.min(arr4).round()
+    arr4_max = np.max(arr4).round()
+    #print(f"Min:{arr4_min}, Max:{arr4_max}\nRandom 2D Array:\n{arr4}")
     
+    arr4 = arr + 1
+    #print(f"Arr 1: {arr} \nArray after adding 1:\n{arr4}")
+    
+    arr5 = np.random.randint(1, 10, size=(3, 4))
+    arr6 = np.random.randint(1, 10, size=(3, 4))
+    arr7 = arr5 * arr6
+    #print(f"Array 1:\n{arr5}\nArray 2:\n{arr6}\nMultiplied Array:\n{arr7}")
+    
+    #Broadcasting
+    matrix = np.array([[1, 2, 3], [4, 5, 6]])
+    vector = np.array([10, 20, 30])
+    broadcasted_sum = matrix + vector
+    broadcasted_multi = matrix * vector
+    print(f"{broadcasted_sum}\n {broadcasted_multi}" )
+         
     
 if __name__ == "__main__":
     df = main()
@@ -145,6 +179,6 @@ if __name__ == "__main__":
     #print(older_than_twentyfive)
     #mean_agegroup(df)
     #print(handle_missing_data)
-    titanic_data()
+    #titanic_data()
+    testing_numpy()
    
-
