@@ -4,7 +4,7 @@ import pandas as pd
 
 def data_generation_excercise():
     fake = Faker()
-    amount_of_data = 25  # Number of records to generate
+    amount_of_data = 50  # Number of records to generate
     df_people = generate_person_data(fake, amount_of_data)
     df_products = generate_product_data(fake, amount_of_data)
     df_trans = generate_transaction_data(fake, df_people, df_products, amount_of_data)
@@ -46,6 +46,11 @@ def data_generation_excercise():
     df_all = pd.merge(df_trans_people, df_products, on="product_id", how="inner") 
 
     #Calculate total spent per user
+    #print(df_all["name"]) #print all the user and their transactions 
+    for user_id in df_all["name"].unique():
+        user_data = df_all[df_all["name"] == user_id]
+        total_spent = (user_data["quantity"] * user_data["price"]).sum()
+        print(f"Total spent by {user_id}: ${total_spent:.2f}") #print total spent by each user
 
         
 def generate_transaction_data(fake: Faker, person: pd.DataFrame, product: pd.DataFrame, amount: int) -> pd.DataFrame:
