@@ -4,10 +4,10 @@ import pandas as pd
 
 def data_generation_excercise():
     fake = Faker()
-    amount_of_data = 5  # Number of records to generate
+    amount_of_data = 25  # Number of records to generate
     df_people = generate_person_data(fake, amount_of_data)
     df_products = generate_product_data(fake, amount_of_data)
-    df_trans = generate_transaction_data(fake, df_people, df_products)
+    df_trans = generate_transaction_data(fake, df_people, df_products, amount_of_data)
 
     #Testing missing values/faulty data
     #df_people = introduce_missing_values(df_people, missing_fraction=0.4)
@@ -39,13 +39,19 @@ def data_generation_excercise():
     #Testing: confirming data types
     #name_data_type = type(df_people["name"].iloc[0])
     #print("Name data type:", {name_data_type})
-    #email_data_type = type(df_people["email"].iloc[0])   
+    #email_data_type = type(df_people["email"].iloc[0])
+    
+    #Merging dataframes
+    df_trans_people = pd.merge(df_people, df_trans, on="user_id", how="inner") 
+    df_all = pd.merge(df_trans_people, df_products, on="product_id", how="inner") 
+
+    #Calculate total spent per user
 
         
-def generate_transaction_data(fake: Faker, person: pd.DataFrame, product: pd.DataFrame) -> pd.DataFrame:
+def generate_transaction_data(fake: Faker, person: pd.DataFrame, product: pd.DataFrame, amount: int) -> pd.DataFrame:
     transactions = []
     
-    for _ in range(20):
+    for _ in range(amount):
         id = np.random.randint(10000, 99999)
         user_id = person.sample().iloc[0]['user_id']
         product_id = product.sample().iloc[0]['product_id']
