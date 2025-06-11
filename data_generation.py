@@ -50,7 +50,14 @@ def data_generation_excercise():
     for user_id in df_all["name"].unique():
         user_data = df_all[df_all["name"] == user_id]
         total_spent = (user_data["quantity"] * user_data["price"]).sum()
-        print(f"Total spent by {user_id}: ${total_spent:.2f}") #print total spent by each user
+        #print(f"Total spent by {user_id}: ${total_spent:.2f}") #print total spent by each user
+    
+    #Get the 5 five products and their average price
+    top_products = df_all.sort_values(by="price", ascending=False).head(5)
+    top_items = top_products[["product_name", "price"]].reset_index(drop=True)
+    top_five_mean = top_products["price"].mean()
+    print(f"\nTop 5 products by price: {top_items}")
+    print(f"\nTop 5 products by price (mean price: ${top_five_mean:.2f}):")
 
         
 def generate_transaction_data(fake: Faker, person: pd.DataFrame, product: pd.DataFrame, amount: int) -> pd.DataFrame:
