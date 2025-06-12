@@ -1,0 +1,26 @@
+Product ID,Product Name,Category,Price,Discount (%),Stock Quantity,Rating (out of 5),Shipping Weight (lbs),Color,Material
+P0001,RXEFO,Books,118.53,8,50,2.57,2.57,Red,Glass
+P0002,GHERI,Home & Kitchen,340.24,19,9,3.68,13.74,White,Fabric
+P0003,VDIQP,Toys & Games,538.28,36,48,1.31,14.89,Red,Metal
+P0004,MDXQE,Toys & Games,191.38,47,91,4.63,19.33,Red,Metal
+P0005,EVMHN,Toys & Games,385.06,46,24,1.07,1.85,Red,Fabric
+P0006,KTQVF,Books,802.11,6,61,3.91,4.54,Green,Wood
+P0007,FHTQN,Books,139.0,33,52,3.73,10.63,Green,Plastic
+P0008,RXGQI,Clothing,610.49,13,47,2.15,13.62,Green,Leather
+P0009,NPDKU,Clothing,902.73,31,87,3.93,4.6,Blue,Metal
+P0010,OHEJY,Sports,567.32,21,65,2.07,15.13,Yellow,Fabric
+P0011,XEFZV,Health & Beauty,667.63,44,59,3.62,14.4,Green,Metal
+P0012,ONABK,Books,150.84,41,7,4.44,3.22,White,Fabric
+P0013,SRUPI,Electronics,654.3,23,3,4.78,9.94,Black,Fabric
+P0014,RMAGZ,Electronics,null,36,25,1.52,15.43,Black,Metal
+P0015,XSYDO,Electronics,136.37,10,72,2.15,11.31,Black,Wood
+P0016,EDUPX,Sports,932.27,37,7,3.12,15.73,Blue,Wood
+P0017,YGPSD,Sports,991.49,31,32,4.05,4.02,Yellow,Wood
+P0018,OCAHG,Toys & Games,119.76,19,89,2.47,4.13,Blue,Leather
+P0019,EZIOZ,Books,972.42,25,30,3.45,15.55,Blue,Leather
+P0020,BZLPX,Clothing,470.66,20,41,4.66,19.52,Black,Plastic
+P0020,HETQL,Clothing,365.26,26,55,3.23,1.76,Yellow,Wood
+P0022,ARXKT,Clothing,357.84,1,28,4.55,2.51,White,Metal
+P0023,AWFIB,Toys & Games,880.93,6,77,3.11,2.11,Blue,Leather
+P0024,UXFLS,Home & Kitchen,177.76,43,90,2.09,1.37,Yellow,Wood
+P0025,IGLXO,Sports,936.66,31,57,1.67,9.94,Black,Glass
